@@ -1,10 +1,21 @@
 import './App.css';
+import { Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Pokemon</h1>
-    </div>
+
+<div className="App">
+
+
+<Navbar></Navbar>
+
+ 
+ <Home></Home>     
+</div>
+   
+      
   );
 }
 

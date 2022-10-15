@@ -1,5 +1,5 @@
 import './App.css';
-import { Route } from "react-router-dom";
+import { BrowserRouter,Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 
@@ -8,12 +8,17 @@ function App() {
 
 <div className="App">
 
+ <BrowserRouter>
+      <Route exact path="/" component={Home} />
+      <Route>
+        <Navbar></Navbar>
 
-<Navbar></Navbar>
+      </Route>
+ </BrowserRouter>
 
- 
- <Home></Home>     
+
 </div>
+
    
       
   );

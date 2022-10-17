@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
     if(!name){
       
       //const data=  await descargaApi();
-      const pokemones = await Pokemon.findAll();
+      const pokemones = await Pokemon.findAll({include:{model:Tipo,attributes:['Nombre']}});
       //const resultado=data.concat(pokemones);
       return res.status(200).send(pokemones);
     }
@@ -87,7 +87,7 @@ router.get("/:id", async (req, res) => {
   try {
 
     
-        pokemon = await Pokemon.findByPk(id);
+        pokemon = await Pokemon.findByPk(id,{include:{model:Tipo,attributes:['Nombre']}});
       
         
     if (!pokemon)
@@ -110,7 +110,7 @@ const  descargaApi= async ()=>{
       var resultado=[];
             
              //const propiedadesPokemon =  fetch(obj.url,{method: "GET"});
-             for(let a=1;a<=20;a++){
+             for(let a=1;a<=150;a++){
                 
                 
                 const pokemonApi= await fetchPokemon(a);
@@ -184,7 +184,8 @@ const llenarTipos =async(tipos,newPokemon)=>{
 /////////////////////////////////////////
 const  validacion= async()=>{
 
-  try{const pokemonValidacion = await Pokemon.findByPk(1);
+  try{
+    const pokemonValidacion = await Pokemon.findByPk(1);
     const tipoValidacion= await Tipo.findByPk(1);
 
     if(!tipoValidacion) await descargarTiposAPi();

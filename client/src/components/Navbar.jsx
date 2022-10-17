@@ -1,16 +1,20 @@
 import React from "react";
-
+import "./NavBar.css"
+import { Link } from "react-router-dom";
 class Navbar extends React.Component{
     
-    constructor(props){
-        super(props)
-    }
+  
 
     render(){
         return(
             <>
-                <h1>Estamos en el HOME</h1>
-                <p>Bienvenidos al repaso del M2 de la #tukineta</p>
+                <ul>
+                    <Link to={`/home`}><li><a>Home</a></li></Link>
+                    
+                    <li><a href="news.asp">New pokemon</a></li>
+                    <li><a href="contact.asp">Types</a></li>
+                    <li><a href="about.asp">About</a></li>
+                </ul>
             </>
         )
     }

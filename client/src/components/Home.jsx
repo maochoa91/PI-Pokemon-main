@@ -1,11 +1,15 @@
 import React from "react";
+import Pokemones from "./Contenedores/Pokemones.jsx";
+import Buton from "../components/buton.jsx";
 
-const Home =()=>{
+function Home() {
 
 
     return(
 <>
-        <h3>este es mi app</h3>
+        <div>
+        <Pokemones/>
+        </div>
 </>
 
     )

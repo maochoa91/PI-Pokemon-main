@@ -7,10 +7,14 @@
     border: 1px solid rgb(58, 54, 54);
     padding: 50px;
 }
-h2{    text-align: center;
+.h2{    
+        color: azure;
+        
+
+}
+h3{
         width: 100px;
         display: table-cell;
-        color: azure;
         top: 100px;
 
 }

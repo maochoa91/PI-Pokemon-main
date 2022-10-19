@@ -8,12 +8,13 @@ class Navbar extends React.Component{
     render(){
         return(
             <>
-                <ul>
-                    <Link to={`/home`}><li><a>Home</a></li></Link>
-                    
-                    <li><a href="news.asp">New pokemon</a></li>
-                    <li><a href="contact.asp">Types</a></li>
-                    <li><a href="about.asp">About</a></li>
+                <ul className="tonav">
+                    <Link className="menu" to={`/home`}><a>Home</a></Link>
+                    <Link className="menu" ><a href="news.asp">New pokemon</a></Link>
+                    <Link className="menu"  to={`/type`}><a>Types</a></Link>
+                    <Link className="menu" ><a href="about.asp">About</a></Link>
+
+                   
                 </ul>
             </>
         )

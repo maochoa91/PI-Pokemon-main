@@ -1,7 +1,6 @@
 import { GET_POKEMON,
-    ADD_POKEMON,
-    DELETE_POKEMON,
-    GET_POKEMON_DETAIL,
+    GET_TYPES,
+    GET_POKEMON_NAME,
    
 } from "../actions";
 
@@ -9,6 +8,7 @@ const initialState = {
   pokemons: [],
   tipos: [],
   pokemonDetail: {},
+  pokemonNombre:{},
 };
 const rootReducer = (state = initialState, action) => {
 
@@ -20,13 +20,19 @@ const rootReducer = (state = initialState, action) => {
                 pokemons: action.payload,
                 
               };
-       case DELETE_POKEMON:
-        return{
-          ...state,
-        pokemons: state.pokemons.filter(
-          (pokemon) => pokemon.id !== action.payload
-        ),
-        } 
+             case GET_TYPES: 
+              return {
+                ...state,
+                tipos: action.payload,
+                
+              };
+              case GET_POKEMON_NAME: 
+              return {
+                ...state,
+                pokemonNombre: action.payload,
+                
+              };
+     
        
         default:
               return { ...state };

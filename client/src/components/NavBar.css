@@ -1,24 +1,43 @@
-ul {
+.tonav {
+   
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #1B4F72;
 }
-
-li {
+.menu a {
+    display: table-cell;
+    color: white;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
     float: left;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.menu a:hover {
     background-color: #111;
+}
+.imagenBuaqueda{
+
+    height: 27px;
+    width: 20px;
+    
+    
+}
+.barraBusqueda{
+height: 30px;
+
+}
+.imagenBuaqueda:hover{ width: 25px;}
+.busqueda{padding:10px 500px;}
+
+.menuBusqueda{
+    display: table-cell;
+text-decoration: none;
+float:right;
+padding: 14px 0px;
+
+
 }

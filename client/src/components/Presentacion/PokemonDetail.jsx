@@ -39,9 +39,11 @@ import { Link } from "react-router-dom";
           <h1># {pokemon.ID}</h1>
            <h1> {pokemon.Nombre}</h1>
             <img src={pokemon.IMG}></img>
-            <h2>           </h2>
-            <h2 className={pokemon.tipoUno}> {pokemon.tipoUno}</h2>
-            <h2 className={pokemon.tipoDos} >{pokemon.tipoDos} </h2>
+            <div className="h2">
+            <h3 >           </h3>
+            <h3 className={pokemon.tipoUno}> {pokemon.tipoUno}</h3>
+            <h3 className={pokemon.tipoDos} >{pokemon.tipoDos} </h3>
+            </div>
             <div className="contenido"> 
               <h1>Ataque: {pokemon.Ataque}</h1>
               <h1>Defensa: {pokemon.Defensa}</h1>

@@ -14,9 +14,9 @@ render(){
      
       <div className="nombre">
        
-        <h1>{this.props.name}</h1>
-        <h2> #{this.props.id}</h2>
-        <img src={this.props.img} alt="Pokemons" />
+        <h1 className="nombrePokemon">{this.props.name}</h1>
+        <h1 className="nombrePokemon"> #{this.props.id}</h1>
+        <img className="imgenPokemon"src={this.props.img} alt="Pokemons" />
        
       </div>
       <div className="tablaTipos">

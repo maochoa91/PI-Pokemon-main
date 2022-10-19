@@ -1,0 +1,32 @@
+
+
+
+.portada{
+
+    height:100%;
+    width: 100%;
+}
+.botn{
+
+    position: absolute;
+    left: 578px;
+    top:890px;
+    height:100px;
+    width: 100px;
+    background-color:transparent;
+    border: 1px solid transparent;
+    border-radius:50%;
+}
+.BotonImagen{
+     height:130px;
+    width: 130px;
+    border-radius:50%;
+
+}
+.BotonImagen:hover{
+   
+    background-color: red;
+
+      
+
+}

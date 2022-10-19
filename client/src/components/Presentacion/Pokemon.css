@@ -5,7 +5,11 @@ img {
     top: 15px;
     display: inline-block;
 }
-h1
+.imgenPokemon{
+    border-radius:50%;
+    background-color: white;
+}
+.nombrePokemon
  {
     margin: 0;
     font-weight: 400;
@@ -29,18 +33,20 @@ h3{
     height: 370px;
     width: 250px;
     display: inline-block;
-    background-color: rgb(252, 194, 125);
+    background-color: #75A0E8;
     margin: 10px 100px;
     border: 1px solid #ccc;
     padding: 50px;
+    border-collapse: collapse;
+	overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+     opacity: 1;
+   filter: alpha(opacity=100)
+    
 }
 .container:hover{
 
-    background-color: rgb(216, 47, 17);
-}
-.nombre {
-
-    font-style: italic;
+    background-color: rgb(74, 193, 42);
 }
 .boton{
     margin-top:0px ;

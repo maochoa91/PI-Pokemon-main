@@ -36,10 +36,23 @@ export const getPokemonsName = (name) => async(dispatch)=>{
    const data = await response.json();
    //console.log(data);
    dispatch({
-      type: GET_TYPES,
+      type: GET_POKEMON_NAME,
       payload: data
    })                  
                               
                             
 };
-
+export const addPokemon = (pokemon) => async(dispatch)=>{
+  
+   
+   const response= await fetch(`http://localhost:3001/pokemons`,{method:"POST",headers: {'Content-Type': 'application/json'},body:JSON.stringify(pokemon)})
+   let result = await response.json();
+  alert("Pokemon creado");
+   //console.log(data);
+   dispatch({
+      type: ADD_POKEMON,
+      payload: JSON.stringify(pokemon)
+   })                  
+                              
+                            
+};

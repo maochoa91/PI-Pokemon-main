@@ -8,13 +8,14 @@ import Pokemones from "./components/Contenedores/Pokemones";
 import Portada from "./components/Landing/Portada";
 import PokemonDetail from "./components/Presentacion/PokemonDetail";
 import Type from "./components/Presentacion/Type";
-import Buton from "./components/buton";
+import NEWPOKEMON from "./components/CreatePokemon";
 function App() {
   
 const dispatch = useDispatch();
  useEffect(() => {
-    dispatch(getTypes());
+    
    dispatch(getPokemons());
+   //dispatch(getPokemons());
   });
 
   return (
@@ -23,6 +24,9 @@ const dispatch = useDispatch();
   <Navbar />
   <Route exact path="/">
         <Portada />
+  </Route>
+   <Route exact path="/NewPOkemon">
+        <NEWPOKEMON />
   </Route>
   <Route exact path="/home">
         <Pokemones />

@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     await validacion();
 
     const { Nombre, Vida, Ataque, Defensa, Velocidad, Altura,Peso,tipo } = req.body;
-       
+       //console.log(req.body)
     if ( !Nombre && !Vida && !Ataque && !Defensa && !Velocidad && !Altura && !Peso && !tipo)  
     return res.status(404).send("Falta enviar datos obligatorios");
    
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     }
     );
     
-  console.log("aca")
+  
    
    
     await llenarTipos(tipo,newPokemon)
@@ -63,7 +63,7 @@ router.get("/", async (req, res) => {
      
       const aux={};
       aux["Nombre"]=name;
-      var pokemones = await Pokemon.findAll({ where: aux });
+      var pokemones = await Pokemon.findAll({ where: aux ,include:{model:Tipo,attributes:['Nombre']}});
       
       return res.status(200).send(pokemones);
       

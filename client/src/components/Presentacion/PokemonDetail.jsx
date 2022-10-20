@@ -1,13 +1,18 @@
 
-import { clearPokemons, deletePokemon, getPokemons } from "../../actions";
+import { clearPokemons, getTypes, getPokemons } from "../../actions";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./PokemonDetail.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+//import {  } from "../../actions";
 
 
  const PokemonDetail=(props)=>  {
 
+  const dispatch = useDispatch();
+  dispatch(getPokemons());
+ 
   const id = props.match.params.id;
   const [pokemon, setPokemon] = useState({});
     useEffect(() => {

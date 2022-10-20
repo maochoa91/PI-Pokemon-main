@@ -1,11 +1,20 @@
 
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
+
+import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getTypes } from "../../actions";
 import "./Type.css";
 export const Type=()=>  {
+const dispatch = useDispatch();
 
-     let tipos = useSelector((store) => store.tipos);
+ useEffect(() => {
+   dispatch(getTypes());
+   
+ });     
+  
+  let tipos = useSelector((store) => store.tipos);
 
     
         return(

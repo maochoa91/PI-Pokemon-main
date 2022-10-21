@@ -186,9 +186,9 @@ const  validacion= async()=>{
 
   try{
     const pokemonValidacion = await Pokemon.findByPk(1);
-    const tipoValidacion= await Tipo.findByPk(1);
+    //const tipoValidacion= await Tipo.findByPk(1);
 
-    if(!tipoValidacion) await descargarTiposAPi();
+   // if(!tipoValidacion) await descargarTiposAPi();
     if(!pokemonValidacion) await descargaApi()
 
     

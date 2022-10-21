@@ -14,18 +14,21 @@ function App() {
 const dispatch = useDispatch();
  useEffect(() => {
     
+   dispatch(getTypes());
    dispatch(getPokemons());
-   //dispatch(getPokemons());
+   
   });
 
   return (
 
 <div className='App'>
   <Navbar />
+  
   <Route exact path="/">
         <Portada />
   </Route>
    <Route exact path="/NewPOkemon">
+      
         <NEWPOKEMON />
   </Route>
   <Route exact path="/home">

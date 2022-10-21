@@ -8,73 +8,66 @@ import { getPokemons } from "../../actions";
 import "./Pokemones.css"
 
  const Pokemones=()=>  {
-   const dispatch = useDispatch();
-  //dispatch(getPokemons());
+   //const dispatch = useDispatch();
+  
   let pokemons = useSelector((store) => store.pokemons);
-  let names = pokemons.map((o) => o.Nombre);
  
-  
-  let Ataque = pokemons.map(o => {
-   const resultado={};
-   resultado["ataque"]=o.Ataque;
-    resultado["nombre"]=o.Nombre;
-    return  resultado});
-
-  
-     let orden = [];
+ 
+  let orden = [];
    
-  
+  //////////////////////estados///////////
    const [pagina, setPagina] = useState(0);
   const[listapokemon,setLista]=useState([]);
   const[busquedaPokemon,setBusquedaPokemon]=useState("");
-     useEffect(() => {
-     
-    setLista(pokemons);
-    }, [pokemons]);
 
+
+     useEffect(() => {
+        // dispatch(getPokemons());
+        
+         setLista(pokemons);
+    }, [pokemons]);
+///////////////////////funciones//////////////
+
+////////////////cambiar paginas
  var NextPage=()=>{
-  if(listapokemon.length>pagina+12)
-   setPagina(pagina+12);
+      if(listapokemon.length>pagina+12)
+      setPagina(pagina+12);
  }
  var PreviousPage=()=>{
- 
-  if(pagina>11)
-    setPagina(pagina-12);
+      if(pagina>11)
+      setPagina(pagina-12);
  }
 
  const actualizacion = () => {
+    
     if (listapokemon.length) 
     {
       return listapokemon.slice(pagina, pagina + 12);
     }
-    
     return [];
   };
+///////////////////////////////
 
-let pokemones=actualizacion();
+ let pokemones=actualizacion();
+/////////////////////////////////////orden//////////
 const OrdenarAlfabeticamente = () => {
-
- 
-
        orden = [];
+       let names = pokemons.map((o) => o.Nombre);
        names = names.sort().reverse();
-        names.forEach((p) => {
-        pokemons.forEach((po) => {
-          if (p === po.Nombre) orden.push(po);
-        });
+       names.forEach((p) => {
+       pokemons.forEach((po) => {
+       if (p === po.Nombre) orden.push(po);
+         });
       });
  
-    let pokemons1=orden;
-   setLista(pokemons1);
-
-   setPagina(0);
-
+     let pokemons1=orden;
+     setLista(pokemons1);
+     setPagina(0);
   }
-  const OrdenarAlfabeticamenteInverso = () => {
 
- 
-
+const OrdenarAlfabeticamenteInverso = () => {
        orden = [];
+        let names = pokemons.map((o) => o.Nombre);
        names = names.sort();
         names.forEach((p) => {
         pokemons.forEach((po) => {
@@ -84,105 +77,94 @@ const OrdenarAlfabeticamente = () => {
  
    let pokemons1=orden;
    setLista(pokemons1);
-  
    setPagina(0);
-
   }
-  const OrdenAtaquemayor = () => {
-
- 
-
+const OrdenAtaquemayor = () => {
        orden = [];
+      let Ataque = pokemons.map(o => {
+          const resultado={};
+          resultado["ataque"]=o.Ataque;
+          resultado["ID"]=o.ID;
+          return  resultado});
        Ataque = Ataque.sort((a, b) => b.ataque - a.ataque);
-       
-        Ataque.forEach((f) => {
-        pokemons.forEach((po) => {
-          if (f.ataque === po.Ataque && f.nombre===po.Nombre) orden.push(po);
+       Ataque.forEach((f) => {
+       pokemons.forEach((po) => {
+          if (f.ataque === po.Ataque && f.ID===po.ID) orden.push(po);
         });
       });
- 
    let pokemons1=orden;
    setLista(pokemons1);
-   
    setPagina(0);
-
   }
-    const OrdenAtaquemenor = () => {
-
- 
-
+const OrdenAtaquemenor = () => {
        orden = [];
+      let Ataque = pokemons.map(o => {
+        const resultado={};
+        resultado["ataque"]=o.Ataque;
+        resultado["ID"]=o.ID;
+        return  resultado});
        Ataque = Ataque.sort((a, b) => a.ataque-b.ataque );
-       
-        Ataque.forEach((f) => {
-        pokemons.forEach((po) => {
-          if (f.ataque === po.Ataque && f.nombre===po.Nombre) orden.push(po);
+       Ataque.forEach((f) => {
+       pokemons.forEach((po) => {
+       if (f.ataque === po.Ataque && f.ID===po.ID) orden.push(po);
         });
       });
- 
    let pokemons1=orden;
    setLista(pokemons1);
-   
    setPagina(0);
-
   }
-  const devolver = () => {
+
+const devolver = () => {
     setLista(pokemons);
-    
-   setPagina(0);
-
+    setPagina(0);
   }
-  const filtroTipo = (tipo) => {
-        
-       orden = [];
-        
+///////////////////////////////filtros//////
+const filtroTipo = (tipo) => {
+        orden = [];
         pokemons.forEach((po) => {
 
           if(po.tipos[0] ){
              
               if(po.tipos[0].Nombre===tipo) orden.push(po);
           }
-         
-
-          if(po.tipos[1] ){
+         if(po.tipos[1] ){
               if(po.tipos[1].Nombre===tipo) orden.push(po);
-
           }
-        
       });
  
-   let pokemons1=orden;
-
-   setLista(pokemons1);
-   
-   setPagina(0);
-
+     let pokemons1=orden;
+     setLista(pokemons1);
+     setPagina(0);
   }
+function Nuevos() {
+    let Pokenuevos=pokemons.slice(150);
+    setLista(Pokenuevos);
+    setPagina(0);
+  } 
+function Viejos(){
+    let Pokenuevos=pokemons.slice(0,150);
+    setLista(Pokenuevos);
+    setPagina(0);
+}
 
-  function handleChange(event) {
+///////////////Funciones clic o cambio en los input
+function handleChange(event) {
    setBusquedaPokemon( event.target.value);
   }
 
-  const handleSubmit= async (event) => { 
-    event.preventDefault();
-   
-     
+
+const handleSubmit= async (event) => { 
+     event.preventDefault();
   try {
-    
-        const response= await fetch(`http://localhost:3001/pokemons?name=${busquedaPokemon}`,{method: "GET"})
+     const response= await fetch(`http://localhost:3001/pokemons?name=${busquedaPokemon}`,{method: "GET"})
      const data = await response.json();
      let pokemons1=data;
      setLista(pokemons1);
-    console.log(pokemons1)
-    setBusquedaPokemon("");
+     setBusquedaPokemon("");
   } catch (error) {
     
   }
-    
-    
-   
-    
-  }
+ }
   ////////////////////////////////HTML/////////////////////////////////////////////////////////////
   return (
     <>
@@ -237,6 +219,8 @@ const OrdenarAlfabeticamente = () => {
         <button onClick={OrdenarAlfabeticamente}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/936/PNG/96/sort-reverse-alphabetical-order_icon-icons.com_73401.png"  /></button>
         <button onClick={OrdenAtaquemayor}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/936/PNG/96/sort-by-numeric-order_icon-icons.com_73404.png"  /></button>
         <button onClick={OrdenAtaquemenor}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/936/PNG/96/sort-by-order_icon-icons.com_73403.png" alt="" /></button>
+        <button onClick={Nuevos}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/37/PNG/512/new_3324.png" alt="" /></button>
+        <button onClick={Viejos}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/896/PNG/96/pokemon_go_play_game_cinema_film_movie_icon-icons.com_69163.png" alt="" /></button>
         <button onClick={devolver}><img className="Botonfiltro" src="https://cdn.icon-icons.com/icons2/2456/PNG/96/reset_undo_arrow_icon_149006.png" alt="" /></button>
      </div>
       <h1> # {pagina+1} - {pagina +12} </h1>

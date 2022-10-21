@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
-import { addPokemon,getTypes } from "../actions";
-
+import { addPokemon,getPokemons } from "../actions";
+import "./CreatePokemon.css"
 
 
 function CreatePokemon() {
 const dispatch = useDispatch();
+let pokemons = useSelector((store) => store.pokemons);
+ let names = pokemons.map((o) => o.Nombre);
 
 const [newPokemon, setNewPokemon] = useState({
-    nombre: " ",
+    nombre:"",
     vida: 10,
     ataque: 10,
     defensa: 10,
@@ -20,20 +21,59 @@ const [newPokemon, setNewPokemon] = useState({
     tipo2:"Ninguno",
     
   });
+ 
+
    let tipos = useSelector((store) => store.tipos);
   
  function handleChange(event) {
-   
     
-    setNewPokemon( {...newPokemon,[event.target.name]:event.target.value});
-   
+  if(event.target.name==="nombre")
+   { 
+
+    var palabra=event.target.value;
+        palabra=palabra.split();
+    const expresion=/[a-zA-z]+$/
+   if(expresion.test(palabra)) setNewPokemon( {...newPokemon,[event.target.name]:event.target.value});
+  else{
+        alert("No se permiten caracteres ni numeros, solo letras");
+        return;
+
+  } 
+  
+  }
+    
+   setNewPokemon( {...newPokemon,[event.target.name]:event.target.value});
 
   }
  function handleSubmit(event) {
   
     event.preventDefault();
-     var tipo=[]
+   var tipo=[]
    var pokemonDispatch={}
+   var validacion;
+   const nombreForm=newPokemon.nombre;
+
+  if(nombreForm==="")
+   {
+      alert("Se requiere nombre Pokemon");
+      return;
+
+   }
+  names.forEach(name => {
+ if(name===nombreForm)
+      {
+        validacion=true;
+        return;
+      }
+    
+   });
+   if(validacion===true)
+   {
+      alert("pokemon existente");
+      return;
+
+   }
+  
     tipo.push({"Nombre":newPokemon.tipo1})
     if(newPokemon.tipo2!=="Ninguno")
     {
@@ -48,27 +88,41 @@ const [newPokemon, setNewPokemon] = useState({
     pokemonDispatch["Peso"]= String(newPokemon.peso);
     pokemonDispatch["tipo"]=tipo;
     
-    console.log(pokemonDispatch)
+    
     dispatch(addPokemon(pokemonDispatch))
+    dispatch(getPokemons());
 
 
   }
   
-const [error, setError] = useState({});
- const [disabled, setDisabled] = useState(true); 
+
+function borrar() {
+   const vacio={  nombre: " ",
+    vida: 10,
+    ataque: 10,
+    defensa: 10,
+    velocidad: 10,
+    altura: 10,
+    peso: 10,
+    tipo1:"normal" ,
+    tipo2:"Ninguno",}
+ setNewPokemon(vacio )
+   }
 
 return(
 
     <div class="testbox">
+<button onClick={borrar} className="botonClear" ></button>
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div class="banner">
-          <h1>Create Pokemon</h1>
+          <h1 className="titulo">Create Pokemon</h1>
         </div>
         <div class="item">
           <p>Nombre</p>
           <div class="name-item">
             <input onChange={(e) => handleChange(e)} type="text" name="nombre" placeholder="Name Pokemon" required />
+            
           </div>
         </div>
 
@@ -99,11 +153,12 @@ return(
           <label >{newPokemon.peso}</label>
         </div>
 
-        <div class="item">
-          <p>Tipo 1</p>
-        <div class="city-item">
+        <div class="cajaTipos">
 
-           <select onChange={(e) => handleChange(e)} name="tipo1" required>
+          
+            <div class="itemTipos">
+                <p class="tipo-item">Tipo 1</p>
+           <select class="tipo-item" onChange={(e) => handleChange(e)} name="tipo1" required>
               {
                   tipos.map(
                       (tips)=><option>{tips.Nombre}</option>
@@ -113,10 +168,10 @@ return(
               }
           </select>
           </div>
-          <p>Tipo 2</p>
-        <div class="city-item">
-
-           <select onChange={(e) => handleChange(e)} name="tipo2">
+          
+          <div class="itemTipos">
+                <p class="tipo-item">Tipo 2</p>
+           <select class="tipo-item" onChange={(e) => handleChange(e)} name="tipo2">
                   <option selected="true">Ninguno</option>
               {
                   tipos.map(
@@ -129,8 +184,8 @@ return(
           </div>
         </div>
       
-        <div class="btn-block">
-          <button type="submit"   > Create </button>
+        <div >
+          <button class="btn-Create" type="submit"   > Create </button>
         </div>
       </form>
     </div>

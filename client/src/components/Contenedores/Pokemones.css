@@ -41,12 +41,11 @@ h1{
 .tablaBotones{
     width: 10%;
     height:20%;
-
-     background-color: transparent;
-      border-collapse: collapse;
-      border: 1px solid transparent;
- position: relative;
- left:680px;
+    background-color: transparent;
+    border-collapse: collapse;
+    border: 1px solid transparent;
+    position: relative;
+    left:680px;
  
 }
 
@@ -55,6 +54,7 @@ button{
     color:white ;
     font-weight: 400;
     font:oblique bold 100% cursive;
+    border-radius: 50%;
 }
 .filtroTipos button{
 

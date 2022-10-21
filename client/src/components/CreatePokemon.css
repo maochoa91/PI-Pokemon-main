@@ -1,0 +1,45 @@
+.testbox{
+        height: 700px;
+        width: 500px;
+        display: inline-block;
+        background-color: paleturquoise;
+        margin: 10px 100px;
+        border: 1px solid rgb(58, 54, 54);
+        padding: 50px;
+}
+.titulo,p{
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.itemTipos{
+
+    display: table-cell;
+    padding: 20px;
+}
+.cajaTipos{
+
+    position: relative;
+        left: 150px;
+}
+
+.btn-Create{
+    border-radius: 50%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
+    color: black;
+}
+
+.btn-Create:hover {
+
+    background-color: transparent;
+}
+.botonClear{
+    border-radius: 0%;
+    height: 20px;
+    width: 20px;
+    color: black;
+    text-align: center;
+    position: relative;
+    top:135px;
+    left:100px;
+}

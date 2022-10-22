@@ -1,7 +1,6 @@
 
-import { clearPokemons, getTypes, getPokemons } from "../../actions";
+import { getPokemons } from "../../actions";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import "./PokemonDetail.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -59,7 +58,7 @@ import { useDispatch } from "react-redux";
            
             
        <Link to={`/home`}>
-        <img className="boton" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/96e411d5-21aa-48c9-aaff-096b8a5544a9/dadhznk-3a51975c-49a0-4049-97e9-1eee7e8517d9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk2ZTQxMWQ1LTIxYWEtNDhjOS1hYWZmLTA5NmI4YTU1NDRhOVwvZGFkaHpuay0zYTUxOTc1Yy00OWEwLTQwNDktOTdlOS0xZWVlN2U4NTE3ZDkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.NizuVJen5_F9OHkcAhjyT5h1I_SY5DByVDWRB0l9BX0"></img>
+        <img className="botonPokeball" src="https://cdn.icon-icons.com/icons2/851/PNG/512/Bookmark_icon-icons.com_67583.png"></img>
         </Link>
        
    

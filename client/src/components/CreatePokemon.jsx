@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPokemon,getPokemons } from "../actions";
 import "./CreatePokemon.css"
@@ -6,6 +6,7 @@ import "./CreatePokemon.css"
 
 function CreatePokemon() {
 const dispatch = useDispatch();
+
 let pokemons = useSelector((store) => store.pokemons);
  let names = pokemons.map((o) => o.Nombre);
 
@@ -91,28 +92,17 @@ const [newPokemon, setNewPokemon] = useState({
     
     dispatch(addPokemon(pokemonDispatch))
     dispatch(getPokemons());
-
+     window.location.reload()
 
   }
   
 
-function borrar() {
-   const vacio={  nombre: " ",
-    vida: 10,
-    ataque: 10,
-    defensa: 10,
-    velocidad: 10,
-    altura: 10,
-    peso: 10,
-    tipo1:"normal" ,
-    tipo2:"Ninguno",}
- setNewPokemon(vacio )
-   }
+
 
 return(
 
     <div class="testbox">
-<button onClick={borrar} className="botonClear" ></button>
+
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div class="banner">

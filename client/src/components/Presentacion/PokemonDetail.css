@@ -1,5 +1,5 @@
 .containerDetail {
-    height:700px;
+    height:740px;
     width: 500px;
     display: inline-block;
     background-color: rgb(211, 125, 21);
@@ -22,4 +22,16 @@ h3{
 
     padding: 20px;
     padding-bottom: 80px;
+}
+.botonPokeball{
+        margin-top:0px ;
+        height: 100px;
+        width: 100px;
+        position: relative;
+        top:-90px;
+}
+.botonPokeball:hover {
+    height: 50px;
+     width: 50px;
+
 }

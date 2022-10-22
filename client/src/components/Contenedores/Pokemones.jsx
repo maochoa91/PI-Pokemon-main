@@ -3,10 +3,7 @@
 import Pokemon from "../Presentacion/Pokemon";
 import React, { useEffect,useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getPokemons } from "../../actions";
 import "./Pokemones.css"
-
  const Pokemones=()=>  {
    //const dispatch = useDispatch();
   
@@ -115,11 +112,13 @@ const OrdenAtaquemenor = () => {
   }
 
 const devolver = () => {
+   
     setLista(pokemons);
     setPagina(0);
   }
 ///////////////////////////////filtros//////
 const filtroTipo = (tipo) => {
+  
         orden = [];
         pokemons.forEach((po) => {
 
